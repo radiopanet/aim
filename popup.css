@@ -1,0 +1,252 @@
+:root {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #202437;
+  background: #f6f7fb;
+  font-size: 14px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  max-height: 600px;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  color: white;
+  background: #4255a5;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 4px;
+  font-size: 21px;
+}
+
+.header p {
+  margin-bottom: 0;
+  color: #e1e5ff;
+  font-size: 12px;
+}
+
+.brand-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  color: #4255a5;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: white;
+  border-bottom: 1px solid #e2e5ef;
+}
+
+button {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid #d9ddec;
+  border-radius: 7px;
+  background: white;
+  color: #30364c;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #7b91ed;
+  outline-offset: 2px;
+}
+
+.tabs button {
+  flex: 1;
+  padding-inline: 4px;
+  border-color: transparent;
+}
+
+.tabs button[aria-pressed="true"] {
+  background: #edf0ff;
+  color: #3347a0;
+  font-weight: 650;
+}
+
+main {
+  padding: 16px;
+}
+
+h2 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+h3 {
+  margin: 20px 0 10px;
+  font-size: 14px;
+}
+
+.muted, .empty {
+  color: #70778d;
+  font-size: 12px;
+}
+
+.empty {
+  padding: 12px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+}
+
+.goal-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.goal-item {
+  padding: 12px;
+  border: 1px solid #e1e4ee;
+  border-radius: 8px;
+  background: white;
+}
+
+.goal-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.goal-top input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: #4255a5;
+}
+
+.goal-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-name {
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.completed .goal-name {
+  color: #747b8c;
+  text-decoration: line-through;
+}
+
+.goal-description {
+  margin: 5px 0;
+  color: #697086;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.goal-time {
+  margin-top: 5px;
+  color: #4255a5;
+  font-size: 12px;
+}
+
+.goal-actions, .form-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.goal-actions button {
+  min-height: 30px;
+  padding: 5px 9px;
+  font-size: 12px;
+}
+
+.primary {
+  width: 100%;
+  border-color: #4255a5;
+  background: #4255a5;
+  color: white;
+  font-weight: 600;
+}
+
+form label {
+  display: block;
+  margin: 12px 0 5px;
+  font-weight: 600;
+}
+
+form input:not([type="checkbox"]):not([type="hidden"]),
+form textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 9px;
+  border: 1px solid #d5d9e6;
+  border-radius: 7px;
+  background: white;
+  color: inherit;
+  font: inherit;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form .primary {
+  margin-top: 14px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.check-row input {
+  width: 17px;
+  height: 17px;
+  accent-color: #4255a5;
+}
+
+.status {
+  color: #3347a0;
+  font-size: 12px;
+}
+
+footer {
+  padding: 8px 16px;
+  border-top: 1px solid #e2e5ef;
+  color: #858ba0;
+  text-align: center;
+  font-size: 11px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
