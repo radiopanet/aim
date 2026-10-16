@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aim</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>Aim</h1>
+            <p id="current-date"></p>
+        </div>
+        <span aria-hidden="true" class="brand-icon">✓</span>
+    </header>
+
+    <nav class="tabs" aria-label="Goal views">
+        <button type="button" data-view="today" aria-pressed="true">
+            Today
+        </button>
+        <button type="button" data-view="tomorrow" aria-pressed="false">
+            Tomorrow
+        </button>
+        <button type="button" data-view="settings" aria-pressed="false">
+            Settings
+        </button>
+    </nav>
+
+    <main>
+        <section id="today-view" class="view">
+            <h2>Today's goal</h2>
+            <p id="today-summary" class="muted"></p>
+            <ul id="today-list" class="goal-list"></ul>
+            <p id="today-empty" class="empty" hidden>
+                No goals planned for today. Add some for tomorrow!
+            </p>
+            <button type="button" id="plan-button" class="primary">
+                Plan tomorrow's goals
+            </button>
+        </section>
+    </main>
+</body>
+</html>
