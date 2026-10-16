@@ -1,105 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aim</title>
-    <link rel="stylesheet" href="popup.css">
-    <script src="popup.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aim</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" defer></script>
 </head>
-
 <body>
-    <header class="header">
-        <div>
-            <h1>Aim</h1>
-            <p id="current-date"></p>
+  <header class="header">
+    <div>
+      <h1>Aim</h1>
+      <p id="current-date"></p>
+    </div>
+    <span aria-hidden="true" class="brand-icon">✓</span>
+  </header>
+
+  <nav class="tabs" aria-label="Goal views">
+    <button type="button" data-view="today" aria-pressed="true">
+      Today
+    </button>
+    <button type="button" data-view="tomorrow" aria-pressed="false">
+      Tomorrow
+    </button>
+    <button type="button" data-view="settings" aria-pressed="false">
+      Settings
+    </button>
+  </nav>
+
+  <main>
+    <section id="today-view" class="view">
+      <h2>Today's goals</h2>
+      <p id="today-summary" class="muted"></p>
+      <ul id="today-list" class="goal-list"></ul>
+      <p id="today-empty" class="empty" hidden>
+        No goals planned for today. Add some for tomorrow!
+      </p>
+      <button type="button" id="plan-button" class="primary">
+        Plan tomorrow's goals
+      </button>
+    </section>
+
+    <section id="tomorrow-view" class="view" hidden>
+      <h2>Plan tomorrow</h2>
+      <p class="muted">Decide what you want to accomplish.</p>
+
+      <form id="goal-form">
+        <input type="hidden" id="goal-id">
+
+        <label for="goal-name">Goal name *</label>
+        <input id="goal-name" name="name" maxlength="120"
+               required autocomplete="off"
+               placeholder="e.g. Study TypeScript">
+
+        <label for="goal-description">Description (optional)</label>
+        <textarea id="goal-description" name="description"
+                  maxlength="2000" rows="3"
+                  placeholder="What do you want to achieve?"></textarea>
+
+        <label for="planned-time">Planned time (optional)</label>
+        <input id="planned-time" name="plannedTime" type="time">
+
+        <div class="form-actions">
+          <button type="submit" id="save-goal" class="primary">
+            Add goal
+          </button>
+          <button type="button" id="cancel-edit" hidden>
+            Cancel edit
+          </button>
         </div>
-        <span aria-hidden="true" class="brand-icon">✓</span>
-    </header>
+      </form>
 
-    <nav class="tabs" aria-label="Goal views">
-        <button type="button" data-view="today" aria-pressed="true">
-            Today
-        </button>
-        <button type="button" data-view="tomorrow" aria-pressed="false">
-            Tomorrow
-        </button>
-        <button type="button" data-view="settings" aria-pressed="false">
-            Settings
-        </button>
-    </nav>
+      <h3>Tomorrow's list</h3>
+      <ul id="tomorrow-list" class="goal-list"></ul>
+      <p id="tomorrow-empty" class="empty">
+        No goals yet. Add your first goal above.
+      </p>
+      <p id="form-status" class="status" role="status"
+         aria-live="polite"></p>
+    </section>
 
-    <main>
-        <section id="today-view" class="view">
-            <h2>Today's goal</h2>
-            <p id="today-summary" class="muted"></p>
-            <ul id="today-list" class="goal-list"></ul>
-            <p id="today-empty" class="empty" hidden>
-                No goals planned for today. Add some for tomorrow!
-            </p>
-            <button type="button" id="plan-button" class="primary">
-                Plan tomorrow's goals
-            </button>
-        </section>
+    <section id="settings-view" class="view" hidden>
+      <h2>Reminder settings</h2>
 
-        <section id="tomorrow-view" class="view" hidden>
-            <h2>Plan tomorrow</h2>
-            <p class="muted">Decide what you want to accomplish</p>
+      <form id="settings-form">
+        <label for="evening-time">Evening reminder</label>
+        <input id="evening-time" type="time" value="21:00" required>
 
-            <form id="goal-form">
-                <input type="hidden" class="goal-id">
+        <label for="morning-time">Morning reminder</label>
+        <input id="morning-time" type="time" value="08:00" required>
 
-                <label for="goal-name">Goal name *</label>
-                <input id="goal-name" name="name" maxlength="120" required autocomplete="off"
-                    placeholder="e.g Study TypeScript">
+        <label class="check-row" for="notifications-enabled">
+          <input id="notifications-enabled" type="checkbox" checked>
+          Enable notifications
+        </label>
 
-                <label for="goal-description">Desription (optional)</label>
-                <textarea name="description" id="goal-description" maxlength="2000" rows="3"
-                    placeholder="What do you want to achieve?">
-                </textarea>
+        <button type="submit" class="primary">Save settings</button>
+        <p id="settings-status" class="status" role="status"
+           aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
 
-                <label for="planned-time">Planned time (optional)</label>
-                <input type="time" name="plannedTime" id="planned-time">
-
-                <div class="form-actions">
-                    <button type="submit" id="save-goal" class="primary">
-                        Add goal
-                    </button>
-                    <button type="button" id="cancel-edit" hidden>
-                        Cancel edit
-                    </button>
-                </div>
-            </form>
-
-            <h3>Tomorrow's list</h3>
-            <ul id="tomorrow-list" class="goal-list"></ul>
-            <p id="tomorrow-empty" class="empty">
-                No goals yet. Add your first goal above.
-            </p>
-            <p id="form-status" class="status" role="status" aria-live="polite"></p>
-        </section>
-
-        <section id="settings-view" class="view" hidden>
-            <h2>Reminder settings</h2>
-
-            <form id="settings-form">
-                <label for="evening-time">Evening reminder</label>
-                <input id="evening-time" type="time" value="21:00" required>
-
-                <label for="morning-time">Morning reminder</label>
-                <input id="morning-time" type="time" value="08:00" required>
-
-                <label class="check-row" for="notifications-enabled">
-                    <input id="notifications-enabled" type="checkbox" checked>
-                    Enable notifications
-                </label>
-
-                <button type="submit" class="primary">Save settings</button>
-                <p id="settings-status" class="status" role="status" aria-live="polite"></p>
-            </form>
-        </section>
-    </main>
+  <footer>
+    <p>Small steps. Consistent progress.</p>
+  </footer>
 </body>
-
 </html>
