@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Aim",
+    "version": "1.0.0",
+    "description": "Plan tomorrow's goal tonight and track them each day",
+    "permission": [
+        "storage",
+        "alarms",
+        "notifications"
+    ],
+    "action" : {
+        "default_title": "Aim",
+        "default_popup": "popup.html"
+    },
+    "backround": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "browser_specific_setting": {
+        "gecko": {
+            "id": "to be defined",
+            "strict_min_version": "128.0"
+        }
+    }
+}
